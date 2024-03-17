@@ -2,8 +2,7 @@ import { Prisma, PrismaClient, UserRole } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { adminSearchFields } from "./admin.constant";
 import calculatePagination from "../../../helpers/paginationHelper";
-
-const prisma = new PrismaClient();
+import prisma from "../../../shared/prisma";
 
 // [
 //     {
