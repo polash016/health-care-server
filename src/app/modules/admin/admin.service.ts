@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import { adminSearchFields } from "./admin.constant";
 import calculatePagination from "../../../helpers/paginationHelper";
 import prisma from "../../../shared/prisma";
+import { TAdminFilterRequest } from "./admin.interface";
+import { TPaginationOptions } from "../../interfaces/pagination";
 
 // [
 //     {
@@ -19,7 +21,10 @@ import prisma from "../../../shared/prisma";
 //     },
 //   ],
 
-const getAllAdmin = async (params: any, options: any) => {
+const getAllAdmin = async (
+  params: TAdminFilterRequest,
+  options: TPaginationOptions
+) => {
   const { limit, page, skip, sortBy, sortOrder } = calculatePagination(options);
   const andConditions: Prisma.AdminWhereInput[] = [];
 
@@ -40,7 +45,7 @@ const getAllAdmin = async (params: any, options: any) => {
     andConditions.push({
       AND: Object.keys(filterData).map((key) => ({
         [key]: {
-          equals: filterData[key],
+          equals: (filterData as any)[key],
         },
       })),
     });
