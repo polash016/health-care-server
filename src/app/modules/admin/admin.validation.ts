@@ -7,6 +7,7 @@ const updateAdmin = z.object({
   }),
 });
 
+
 export const AdminValidation = {
   updateAdmin,
 };
