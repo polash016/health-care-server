@@ -6,20 +6,7 @@ import prisma from "../../../shared/prisma";
 import { TAdminFilterRequest } from "./admin.interface";
 import { TPaginationOptions } from "../../interfaces/pagination";
 
-// [
-//     {
-//       name: {
-//         contains: params.searchTerm,
-//         mode: "insensitive",
-//       },
-//     },
-//     {
-//       email: {
-//         contains: params.searchTerm,
-//         mode: "insensitive",
-//       },
-//     },
-//   ],
+
 
 const getAllAdmin = async (
   params: TAdminFilterRequest,

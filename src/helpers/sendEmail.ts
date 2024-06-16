@@ -17,7 +17,7 @@ const sendEmail = async (email: string, html: string) => {
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: `"Health Care 👻" <${config.email}>`, // sender address
+    from: `"Health Care 👻" <${config.email}>`, // sender address 
     to: email, // list of receivers
     subject: "Reset Password Link", // Subject line
     //text: "Hello world?", // plain text body

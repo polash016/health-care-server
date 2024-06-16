@@ -94,7 +94,7 @@ const changePassword = async (
     throw new AppError(httpStatus.UNAUTHORIZED, "Wrong Password");
   }
 
-  console.log(typeof config.salt_rounds);
+  
   const hashedPassword = await bcrypt.hash(
     payload.newPassword,
     Number(config.salt_rounds) as number
