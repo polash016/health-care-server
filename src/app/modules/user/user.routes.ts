@@ -7,6 +7,13 @@ import { userValidation } from "./user.validation";
 
 const router = express.Router();
 
+router.get(
+  "/",
+  auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
+  userController.getAllUsers
+);
+
+
 router.post(
   "/create-admin",
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
@@ -36,6 +43,9 @@ router.post(
         return userController.createPatient(req, res, next)
     }
 );
+
+
+
 
 
 export const userRoutes = router;

@@ -155,5 +155,5 @@ export const adminServices = {
   getSingleAdmin,
   updateAdmin,
   deleteAdmin,
-  softDeleteAdmin,
+  softDeleteAdmin
 };

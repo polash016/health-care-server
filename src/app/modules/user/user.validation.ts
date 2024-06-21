@@ -30,6 +30,8 @@ const createDoctor  = z.object({
   
 });
 
+
+
 const createPatient = z.object({
   password: z.string({required_error: 'Password is required'}).min(6),
   admin: z.object({
@@ -39,6 +41,8 @@ const createPatient = z.object({
     address: z.string().optional(),
   })
 })
+
+
 
 export const userValidation = {
     createAdmin,
