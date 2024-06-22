@@ -21,6 +21,8 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
 const createDoctor = catchAsync(async (req: Request, res: Response) => {
   const result = await userService.createDoctor(req);
 
+  console.log({result})
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -55,10 +57,51 @@ const getAllUsers = catchAsync(async (req, res) => {
   });
 });
 
+const changeProfileStatus = catchAsync(async (req, res) => {
+  const {id} = req.params
+
+  const result = await userService.changeStatus(id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User Status Changed",
+    data: result.data,
+  });
+});
+
+
+const getMyProfile = catchAsync(async (req, res) => {
+
+  const result = await userService.getProfile(req.user);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Profile retrieved successfully",
+    data: result,
+  });
+});
+
+const updateMyProfile = catchAsync(async (req, res) => {
+
+  const result = await userService.updateProfile(req.user, req);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Profile updated successfully",
+    data: result,
+  });
+});
+
 
 export const userController = {
   createAdmin,
   createDoctor,
   createPatient,
-  getAllUsers
+  getAllUsers,
+  changeProfileStatus,
+  getMyProfile,
+  updateMyProfile
 };

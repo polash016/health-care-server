@@ -1,63 +1,22 @@
+import httpStatus from "http-status";
+import catchAsync from "../../../shared/catchAsync";
+import sendResponse from "../../../shared/sendResponse";
+import { DoctorService } from "./doctor.service";
 
 
-// const getAdmin = catchAsync(async (req, res) => {
-//   const filters = pick(req.query, adminFilterField);
-//   const options = pick(req.query, ["limit", "page", "sortBy", "sortOrder"]);
+const updateIntoDB = catchAsync(async (req, res) => {
 
-//   const result = await adminServices.getAllAdmin(filters, options);
+    const { id } = req.params;
+    const result = await DoctorService.updateIntoDB(id, req.body);
 
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "Admin data fetched!",
-//     data: result.data,
-//     meta: result.meta,
-//   });
-// });
-// const getSingleAdmin = catchAsync(async (req, res) => {
-//   const result = await adminServices.getSingleAdmin(req.params.id);
-
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "Admin data fetched!",
-//     data: result,
-//   });
-// });
-
-// const updateSingleAdmin = catchAsync(async (req, res) => {
-//   const result = await adminServices.updateAdmin(req.params.id, req.body);
-
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "Admin data updated!",
-//     data: result,
-//   });
-// });
-
-// const deleteSingleAdmin = catchAsync(async (req, res) => {
-//   const result = await adminServices.deleteAdmin(req.params.id);
-
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "Admin data deleted!",
-//     data: result,
-//   });
-// });
-
-// const softDeleteSingleAdmin = catchAsync(async (req, res) => {
-//   const result = await adminServices.softDeleteAdmin(req.params.id);
-
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: "Admin data deleted!",
-//     data: result,
-//   });
-// });
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Doctor data updated!",
+        data: result
+    })
+});
 
 export const doctorController = {
-  
+  updateIntoDB
 };
